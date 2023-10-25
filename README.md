@@ -2,7 +2,7 @@
 ## Start Backend: 
 ```ruby
 npm i
-node run server
+node  server
 ```
 ## Start Frontend: 
 ```ruby
