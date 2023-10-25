@@ -21,31 +21,35 @@
               class="btn"
               @click="showModal(user,index)"
           >
-            Open Modal!
+            Подробнее
           </button>
-          <modal
-              v-if="isModalVisible"
-              @close="closeModal"
-          >
-            <template v-slot:header>
-              <p>{{name }}</p>
-            </template>
-            <template v-slot:body_phone>
-              <p>{{ phone }}</p>
-            </template>
-            <template v-slot:body_mail>
-              <p>{{ mail }}</p>
-            </template>
-            <template v-slot:body_date>
-              <p>{{ date }}</p>
-            </template>
-            <template v-slot:body_profession>
-              <p>{{ profession }}</p>
-            </template>
-            <template v-slot:body_job>
-              <p>{{ sub_job }}</p>
-            </template>
-          </modal>
+          <Transition :duration="{enter: 500 , leave: 500}"  name="nested">
+            <modal
+                v-if="isModalVisible"
+                @close="closeModal"
+                class="outer"
+            >
+              <template v-slot:header>
+                <p>{{ name }}</p>
+              </template>
+              <template v-slot:body_phone>
+                <p>{{ phone }}</p>
+              </template>
+              <template v-slot:body_mail>
+                <p>{{ mail }}</p>
+              </template>
+              <template v-slot:body_date>
+                <p>{{ date }}</p>
+              </template>
+              <template v-slot:body_profession>
+                <p>{{ profession }}</p>
+              </template>
+              <template v-slot:body_job>
+                <p>{{ sub_job }}</p>
+              </template>
+            </modal>
+          </Transition>
+
         </div>
       </div>
     </div>
@@ -157,4 +161,32 @@ getUsers()
   font-weight: 700;
   line-height: 30px; /* 125% */
 }
+.btn{
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid green;
+  padding: 10px;
+
+}
+.btn:hover{
+  color: white;
+  background: green;
+  cursor: pointer;
+}
+.nested-enter-active{
+  transition: all 0.5s ease;
+}
+
+/* delay leave of parent element */
+.nested-leave-active {
+  transition: all 1s ease;
+  transform: translateX(100vw);
+}
+
+.nested-enter-from{
+  transform: translateY(100vw);
+  opacity: 0;
+}
+
+
 </style>

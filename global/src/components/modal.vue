@@ -18,7 +18,7 @@
             @click="close"
             aria-label="Close modal"
         >
-          <font-awesome-icon :icon="['fas', 'xmark']" style="font-size: 30px;  color: var(--plumbum, #262C40);"/>
+          <font-awesome-icon :icon="['fas', 'xmark']" style="" class="close_modal"/>
         </button>
       </header>
       <section
@@ -195,5 +195,19 @@ let close = function () {
   font-family: "Proxima Nova light";
   font-weight: 400;
   color: #262C40;
+}
+
+.close_modal {
+  font-size: 30px;
+  color: #262C40;
+  padding: 5px;
+}
+
+.close_modal:hover {
+  color: red !important;
+  cursor: pointer;
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 5px;
 }
 </style>
