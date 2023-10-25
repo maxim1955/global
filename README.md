@@ -1,6 +1,7 @@
 # Test task
 ## Start Backend: 
 ```ruby
+cd server
 npm i
 node  server
 ```
