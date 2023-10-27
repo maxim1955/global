@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-backdrop">
+  <div class="modal-backdrop" @click="close">
     <div class="modal"
          role="dialog"
          aria-labelledby="modalTitle"
@@ -85,9 +85,10 @@
       </section>
       <footer class="modal-footer">
         <p class="footer__title">Дополнительная информация:</p>
-        <span class="slot_item">
-            <slot name="footer">
+        <span class="slot_item slot_item__footer">
+            <slot name="footer" class="slot_item__footer">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, harum?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, harum?
           </slot>
           </span>
       </footer>
@@ -97,10 +98,15 @@
 <script setup>
 const emit = defineEmits(['close'])
 let close = function () {
+  console.log('close')
   emit('close')
 }
 </script>
 <style>
+*{
+  margin: 0;
+  padding: 0;
+}
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -125,25 +131,26 @@ let close = function () {
 
 .modal-header,
 .modal-footer {
-  padding: 24px;
   display: flex;
   justify-content: space-between;
   align-items: start;
 }
 
 .modal-header {
-  border-bottom: 1px solid #eeeeee;
   justify-content: space-between;
   color: #262C40;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 700;
-
+padding: 24px 24px 40px 24px;
 
 }
 
 .modal-footer {
   border-top: 1px solid #eeeeee;
   justify-content: flex-start;
+  flex-direction: column;
+  padding: 0 24px;
+  display: flex;
   flex-direction: column;
 }
 
@@ -164,7 +171,6 @@ let close = function () {
 }
 
 .body__item {
-  padding-bottom: 14px;
   font-size: 18px;
   font-family: "Proxima Nova light";
   font-weight: 400;
@@ -173,6 +179,7 @@ let close = function () {
 .body__inner {
   display: flex;
   align-items: center;
+  padding-bottom: 14px;
 }
 
 .slot_item {
@@ -183,20 +190,26 @@ let close = function () {
   font-weight: 100;
   line-height: 24px;
   padding-left: 40px;
+  width: 100%;
 }
 
 .body_subtitle {
-  width: 30%;
+  width: 50%;
+  font-weight: 600;
 }
 
 .footer__title {
   padding-bottom: 14px;
   font-size: 18px;
   font-family: "Proxima Nova light";
-  font-weight: 400;
+  font-weight: 600;
   color: #262C40;
 }
-
+.slot_item__footer{
+  padding-left: 1%;
+  width: 100%;
+  padding-bottom: 48px;
+}
 .close_modal {
   font-size: 30px;
   color: #262C40;
@@ -204,7 +217,7 @@ let close = function () {
 }
 
 .close_modal:hover {
-  color: red !important;
+  color: #8189A3  !important;
   cursor: pointer;
   border: 2px solid;
   border-radius: 10px;
